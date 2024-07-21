@@ -10,6 +10,7 @@ class FlappyBird:
         """ Initialize tha game and create game resources """
         pygame.init()
 
+        self.clock = pygame.time.Clock()
         self.screen = pygame.display.set_mode((720, 480))
         pygame.display.set_caption("Flappy Bird")
 
@@ -20,6 +21,9 @@ class FlappyBird:
                     sys.exit()
 
             pygame.display.flip()
+            self.clock.tick(60)
+            print(self.clock.get_fps())
+
 
 
 if __name__ == "__main__":
