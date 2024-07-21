@@ -1,5 +1,6 @@
 import sys
 import pygame
+from settings import Settings
 
 
 
@@ -9,13 +10,12 @@ class FlappyBird:
     def __init__(self):
         """ Initialize tha game and create game resources """
         pygame.init()
+        self.settings = Settings()
 
         self.clock = pygame.time.Clock()
 
-        self.screen = pygame.display.set_mode((720, 480))
+        self.screen = pygame.display.set_mode((self.settings.screen_width, self.settings.screen_height))
         pygame.display.set_caption("Flappy Bird")
-
-        self.bg_color = (84, 168, 50)
 
     def run_game(self):
         while True:
@@ -23,7 +23,7 @@ class FlappyBird:
                 if event.type == pygame.QUIT:
                     sys.exit()
 
-            self.screen.fill(self.bg_color)
+            self.screen.fill(self.settings.bg_color)
 
             pygame.display.flip()
             self.clock.tick(60)
