@@ -13,9 +13,7 @@ class Bird:
 
         # load the bird image and get its rect
         self.original_image = pygame.image.load(self.settings.bird_image)
-
-        # changing the size of the bird image
-        self.resized_image = pygame.transform.scale(self.original_image, self.settings.bird_size)
+        self.resized_image = self.resized_bird_image()
 
         # get the bird rect
         self.rect = self.resized_image.get_rect()
@@ -27,3 +25,8 @@ class Bird:
     def blitme(self):
         """ Drawing the ship """
         self.screen.blit(self.resized_image, self.rect)
+
+    def resized_bird_image(self):
+        """ Changing the size of the bird image """
+        resized_image = pygame.transform.scale(self.original_image, self.settings.bird_size)
+        return resized_image
