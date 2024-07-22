@@ -35,7 +35,7 @@ class FlappyBird:
                 sys.exit()
 
     def _update_screen(self):
-        self.screen.fill(self   .settings.bg_color)
+        self.screen.fill(self.settings.bg_color)
         self.bird.blitme()
         pygame.display.flip()
 
