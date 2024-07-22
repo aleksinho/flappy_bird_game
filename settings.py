@@ -20,4 +20,4 @@ class Settings:
 
         # bird starting position
         self.x_start = 60
-        self.y_start = 240
+        self.y_start = 220
