@@ -14,16 +14,23 @@ class Bird:
         # store exact vertical position of the bird
         self.y = float(self.rect.y)
 
+        # gravity physics
+        self.gravity = 1
+        self.jump_height = 15
+        self.velocity = self.jump_height
+
         # if this is True the bird will jump
-        self.jump = False
+        self.jumping = False
 
     def update(self):
-        if self.jump:
-            self.y -= 7
-            self.rect.y = self.y
-        else:
-            self.y += 5
-            self.rect.y = self.y
+        if self.jumping:
+            self.y -= self.velocity
+            self.velocity -= self.gravity
+            if self.velocity < -self.jump_height:
+                self.jumping = False
+                self.velocity = self.jump_height
+        
+        self.rect.y = self.y
 
 
     def blitme(self):
