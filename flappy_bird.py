@@ -22,29 +22,28 @@ class FlappyBird:
     def run_game(self):
         while True:
             self._check_events()
-            self.bird.update()
+            self.bird.jump()
             self._update_screen()
 
     
     def _check_events(self):
         """ Respond to keypresses and mouse events """
         for event in pygame.event.get():
-            if event.type == pygame.KEYDOWN:
+            if event.type == pygame.QUIT:
+                sys.exit()
+            elif event.type == pygame.KEYDOWN:
                 self._check_keydown_events(event)
             # elif event.type == pygame.KEYUP:
             #     self._check_keyup_events(event)
-            elif event.type == pygame.QUIT:
-                sys.exit()
 
     def _check_keydown_events(self, event):
         if event.key == pygame.K_q:
             sys.exit()
         elif event.key == pygame.K_SPACE:
             self.bird.jumping = True
-
     # def _check_keyup_events(self, event):
     #     if event.key == pygame.K_SPACE:
-    #         self.bird.jump = False
+    #         self.bird.jumping = False
 
 
     def _update_screen(self):
