@@ -14,5 +14,29 @@ class Bird:
         # store exact vertical position of the bird
         self.y = float(self.rect.y)
 
+        # setting physics variables
+        self.gravity = 0.5
+        self.current_velocity = 0
+        self.max_velocity = -10
+        self.max_fall_speed = 10
+
+        # if this is true the bird will jump
+        self.jumping = False
+
+    def jump(self):
+        if self.jumping:
+            self.current_velocity = self.max_velocity
+            self.jumping = False
+        
+        # applying the gravity
+        self.current_velocity += self.gravity
+
+        # Limit the fall speed
+        if self.current_velocity > self.max_fall_speed:
+            self.current_velocity = self.max_fall_speed
+
+        self.y += self.current_velocity
+        self.rect.y = self.y
+
     def blitme(self):
         self.screen.blit(self.image, self.rect)
